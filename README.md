@@ -48,7 +48,7 @@ to run test on firefox enter command
 
 3. Once execution is completed, result with be displayed with count of test cases, failed error etc. (refer to screen shot below)
 
-![Alt text](/images/MavenRunResult.png)
+![Alt text](/images/MavenRunResult.PNG)
 
 ## Project Structure
 ### Test cases -
