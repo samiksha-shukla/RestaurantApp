@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="6" passed="3" failed="3" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2020-08-03T05:45:30 IST" name="Suite" finished-at="2020-08-03T05:46:55 IST" duration-ms="84918">
+    <groups>
+    </groups>
+    <test started-at="2020-08-03T05:45:30 IST" name="Test" finished-at="2020-08-03T05:46:55 IST" duration-ms="84918">
+      <class name="takeaway.RestAppTest">
+        <test-method is-config="true" signature="Setup(java.lang.String)[pri:0, instance:takeaway.RestAppTest@18cebaa5]" started-at="2020-08-03T05:45:30 IST" name="Setup" finished-at="2020-08-03T05:45:40 IST" duration-ms="9949" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[chrome]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Setup -->
+        <test-method is-config="true" signature="refreshURL()[pri:0, instance:takeaway.RestAppTest@18cebaa5]" started-at="2020-08-03T05:45:40 IST" name="refreshURL" finished-at="2020-08-03T05:45:40 IST" duration-ms="398" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- refreshURL -->
+        <test-method signature="VerifyIfRestaurantIsListed()[pri:1, instance:takeaway.RestAppTest@18cebaa5]" started-at="2020-08-03T05:45:40 IST" name="VerifyIfRestaurantIsListed" finished-at="2020-08-03T05:45:48 IST" duration-ms="7715" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- VerifyIfRestaurantIsListed -->
+        <test-method is-config="true" signature="refreshURL()[pri:0, instance:takeaway.RestAppTest@18cebaa5]" started-at="2020-08-03T05:45:48 IST" name="refreshURL" finished-at="2020-08-03T05:45:49 IST" duration-ms="461" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- refreshURL -->
+        <test-method signature="verifyOrderPlacementFlow()[pri:2, instance:takeaway.RestAppTest@18cebaa5]" started-at="2020-08-03T05:45:49 IST" name="verifyOrderPlacementFlow" finished-at="2020-08-03T05:46:13 IST" duration-ms="24683" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyOrderPlacementFlow -->
+        <test-method is-config="true" signature="refreshURL()[pri:0, instance:takeaway.RestAppTest@18cebaa5]" started-at="2020-08-03T05:46:13 IST" name="refreshURL" finished-at="2020-08-03T05:46:15 IST" duration-ms="2009" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- refreshURL -->
+        <test-method signature="VerifyIfRestaurantsAreListed(java.lang.String, java.lang.String)[pri:3, instance:takeaway.RestAppTest@18cebaa5]" started-at="2020-08-03T05:46:15 IST" name="VerifyIfRestaurantsAreListed" data-provider="PlaceOrder" finished-at="2020-08-03T05:46:25 IST" duration-ms="9964" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[8888]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[test restaurant selenium]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- VerifyIfRestaurantsAreListed -->
+        <test-method is-config="true" signature="refreshURL()[pri:0, instance:takeaway.RestAppTest@18cebaa5]" started-at="2020-08-03T05:46:25 IST" name="refreshURL" finished-at="2020-08-03T05:46:26 IST" duration-ms="547" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- refreshURL -->
+        <test-method signature="VerifyIfRestaurantsAreListed(java.lang.String, java.lang.String)[pri:3, instance:takeaway.RestAppTest@18cebaa5]" started-at="2020-08-03T05:46:26 IST" name="VerifyIfRestaurantsAreListed" data-provider="PlaceOrder" finished-at="2020-08-03T05:46:37 IST" duration-ms="10834" status="FAIL">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[8888]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[test restaurant appium]]>
+              </value>
+            </param>
+          </params>
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[expected [true] but found [false]]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: expected [true] but found [false]
+at org.testng.Assert.fail(Assert.java:97)
+at org.testng.Assert.assertEqualsImpl(Assert.java:136)
+at org.testng.Assert.assertEquals(Assert.java:118)
+at org.testng.Assert.assertEquals(Assert.java:575)
+at org.testng.Assert.assertEquals(Assert.java:585)
+at takeaway.RestAppTest.VerifyIfRestaurantsAreListed(RestAppTest.java:95)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:134)
+at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:597)
+at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
+at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:816)
+at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1378)
+at org.testng.TestRunner.privateRun(TestRunner.java:766)
+at org.testng.TestRunner.run(TestRunner.java:587)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:384)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:378)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:337)
+at org.testng.SuiteRunner.run(SuiteRunner.java:286)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1187)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1109)
+at org.testng.TestNG.runSuites(TestNG.java:1039)
+at org.testng.TestNG.run(TestNG.java:1007)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- VerifyIfRestaurantsAreListed -->
+        <test-method is-config="true" signature="refreshURL()[pri:0, instance:takeaway.RestAppTest@18cebaa5]" started-at="2020-08-03T05:46:37 IST" name="refreshURL" finished-at="2020-08-03T05:46:37 IST" duration-ms="532" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- refreshURL -->
+        <test-method signature="VerifyIfRestaurantsAreListed(java.lang.String, java.lang.String)[pri:3, instance:takeaway.RestAppTest@18cebaa5]" started-at="2020-08-03T05:46:37 IST" name="VerifyIfRestaurantsAreListed" data-provider="PlaceOrder" finished-at="2020-08-03T05:46:44 IST" duration-ms="7029" status="FAIL">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[8888]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[max]]>
+              </value>
+            </param>
+          </params>
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[expected [true] but found [false]]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: expected [true] but found [false]
+at org.testng.Assert.fail(Assert.java:97)
+at org.testng.Assert.assertEqualsImpl(Assert.java:136)
+at org.testng.Assert.assertEquals(Assert.java:118)
+at org.testng.Assert.assertEquals(Assert.java:575)
+at org.testng.Assert.assertEquals(Assert.java:585)
+at takeaway.RestAppTest.VerifyIfRestaurantsAreListed(RestAppTest.java:95)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:134)
+at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:597)
+at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
+at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:816)
+at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1378)
+at org.testng.TestRunner.privateRun(TestRunner.java:766)
+at org.testng.TestRunner.run(TestRunner.java:587)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:384)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:378)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:337)
+at org.testng.SuiteRunner.run(SuiteRunner.java:286)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1187)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1109)
+at org.testng.TestNG.runSuites(TestNG.java:1039)
+at org.testng.TestNG.run(TestNG.java:1007)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- VerifyIfRestaurantsAreListed -->
+        <test-method is-config="true" signature="refreshURL()[pri:0, instance:takeaway.RestAppTest@18cebaa5]" started-at="2020-08-03T05:46:44 IST" name="refreshURL" finished-at="2020-08-03T05:46:45 IST" duration-ms="702" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- refreshURL -->
+        <test-method signature="VerifyIfRestaurantsAreListed(java.lang.String, java.lang.String)[pri:3, instance:takeaway.RestAppTest@18cebaa5]" started-at="2020-08-03T05:46:45 IST" name="VerifyIfRestaurantsAreListed" data-provider="PlaceOrder" finished-at="2020-08-03T05:46:52 IST" duration-ms="6675" status="FAIL">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[8888]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[mavlana]]>
+              </value>
+            </param>
+          </params>
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[expected [true] but found [false]]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: expected [true] but found [false]
+at org.testng.Assert.fail(Assert.java:97)
+at org.testng.Assert.assertEqualsImpl(Assert.java:136)
+at org.testng.Assert.assertEquals(Assert.java:118)
+at org.testng.Assert.assertEquals(Assert.java:575)
+at org.testng.Assert.assertEquals(Assert.java:585)
+at takeaway.RestAppTest.VerifyIfRestaurantsAreListed(RestAppTest.java:95)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:134)
+at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:597)
+at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
+at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:816)
+at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1378)
+at org.testng.TestRunner.privateRun(TestRunner.java:766)
+at org.testng.TestRunner.run(TestRunner.java:587)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:384)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:378)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:337)
+at org.testng.SuiteRunner.run(SuiteRunner.java:286)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1187)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1109)
+at org.testng.TestNG.runSuites(TestNG.java:1039)
+at org.testng.TestNG.run(TestNG.java:1007)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- VerifyIfRestaurantsAreListed -->
+        <test-method is-config="true" signature="Teardown()[pri:0, instance:takeaway.RestAppTest@18cebaa5]" started-at="2020-08-03T05:46:52 IST" name="Teardown" finished-at="2020-08-03T05:46:55 IST" duration-ms="3309" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Teardown -->
+      </class> <!-- takeaway.RestAppTest -->
+    </test> <!-- Test -->
+  </suite> <!-- Suite -->
+</testng-results>
