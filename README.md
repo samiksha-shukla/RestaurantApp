@@ -109,7 +109,7 @@ Projectpath->target->surefire-reports->emailable-report.html
 ### Tests-
 1. All the tests are written in RestAppTest.java class using TestNG annotations available under takeaway package
 Folder path : /RestaurantApp/src/test/java/takeaway/RestAppTest.java
-2. All the reusable methods like wait are written in BuyACarFunction.java class under qwicQA package
+2. All the reusable methods like wait are written in RestAppFunctions.java class under takeaway package
 Folder path: /RestaurantApp/src/test/java/takeaway/RestAppFunctions.java
 ### Dependencies-
 All the dependencies are declared under POM.XML file available in below path
