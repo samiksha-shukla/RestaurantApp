@@ -27,6 +27,7 @@ import takeaway.RestAppFunctions;
 import takeaway.utilities.Constant;
 import takeaway.utilities.ObjectMapper;
 
+
 /**
  * @author Sam
  *
@@ -45,7 +46,6 @@ public class RestAppTest {
 	@DataProvider(name = "PlaceOrder")
 	public Object[][] buyACar() throws Exception {
 		Object[][] testObjArray = Constant.xlsxReader.getTableArray("MultiRestaurant", 2); 
-		System.out.println("in DL");
 		return (testObjArray);
 	}
 
@@ -53,24 +53,32 @@ public class RestAppTest {
 	@BeforeTest
 	public void Setup(String browserName)
 	{ String headless = Constant.xlsxReader.getCellData("headless", "value", 2);
-	System.out.println(headless);
+	System.out.println("Do you want to run the test in headless mode : " + headless);
 	if(browserName.equalsIgnoreCase("chrome"))
-	{ 
-		//	driver = new HtmlUnitDriver();
-		//option.addArguments("--headless");
-		System.setProperty("webdriver.chrome.driver", projectPath+"/drivers/chromedriver.exe");
-		driver = new ChromeDriver();
-		driver.manage().window().maximize();
+	{ if(headless.equalsIgnoreCase("yes"))
+	{
+		driver = new HtmlUnitDriver();
+		option.addArguments("--headless");
+		option.addArguments("--disable-gpu");
+		option.addArguments("--window-size=1920,1080");
+	}
+	else{
+	}	System.setProperty("webdriver.chrome.driver", projectPath+"/drivers/chromedriver.exe");
+	driver = new ChromeDriver(option);
+	//driver.manage().window().maximize();
 	}
 	if(browserName.equalsIgnoreCase("firefox"))
 	{
-		FirefoxBinary firefoxBinary = new FirefoxBinary();
-		//			firefoxBinary.addCommandLineOptions("--headless");
-		FirefoxOptions fo = new FirefoxOptions();
-		//			fo.setBinary(firefoxBinary);
+		FirefoxOptions firefoxOptions = new FirefoxOptions();
+		if(headless.equalsIgnoreCase("yes"))
+		{		
+			firefoxOptions.addArguments("--headless");
+			option.addArguments("--disable-gpu");
+	        firefoxOptions.addArguments("--window-size=1920,1080");
+		}		
 		System.setProperty("webdriver.gecko.driver", projectPath+"/drivers/geckodriver1.exe");
-		//	driver = new FirefoxDriver(fo);
-
+		driver = new FirefoxDriver(firefoxOptions);
+			
 	}
 	driver.get(url);
 	driver.manage().window().maximize();
@@ -80,27 +88,9 @@ public class RestAppTest {
 	public void refreshURL()
 	{
 		driver.get(url);
-		System.out.println("in before method");
 	}
 
-	@Test(enabled = true, priority =3, dataProvider = "PlaceOrder")
-	public void VerifyIfRestaurantsAreListed( String pin, String restaurant)
-	{ 	
-		String flag = "false";
-		tc_runmode =Constant.xlsxReader.getCellData("TestCases", "runmode",4);
-		if (tc_runmode.equals("Yes"))
-		{ 		
-			objFunction.searchPinWithAlpha(driver, pin);
-			flag = objFunction.findRestaurant(driver,restaurant);
-			Assert.assertEquals(flag, "true");
-			System.out.println(restaurant + pin);
-		}
-		else {
-			throw new SkipException("Skipping / Ignoring - Script not include for Execution ");
-		}
-	}
-
-	@Test(priority =1,enabled = true)
+	@Test(priority =1)
 	public void VerifyIfRestaurantIsListed()
 	{  
 		String flag = "false";
@@ -121,7 +111,7 @@ public class RestAppTest {
 		}
 	}
 
-	@Test(priority =2,enabled = true )
+	@Test(priority =2 )
 	public void verifyOrderPlacementFlow()
 	{ 
 		tc_runmode =Constant.xlsxReader.getCellData("TestCases", "runmode",3);
@@ -136,13 +126,30 @@ public class RestAppTest {
 			objFunction.addItemAndClickOrder(driver, "salami");
 			//Enter address and other details in payment page
 			objFunction.enterDetails(driver, "UserInput", 3);
-			//get order reference number after order is place
-			System.out.println(objFunction.getOrderReferenceNumber(driver));
+			//print order reference number after order is place
+			System.out.println("order reference number is " + objFunction.getOrderReferenceNumber(driver) );
+
 		}
 		else {
 			throw new SkipException("Skipping / Ignoring - Script not include for Execution ");
 		}
 
+	}
+
+	@Test(priority =3, dataProvider = "PlaceOrder")
+	public void VerifyIfRestaurantsAreListed( String pin, String restaurant)
+	{ 	
+		String flag = "false";
+		tc_runmode =Constant.xlsxReader.getCellData("TestCases", "runmode",4);
+		if (tc_runmode.equals("Yes"))
+		{ 		
+			objFunction.searchPinWithAlpha(driver, pin);
+			flag = objFunction.findRestaurant(driver,restaurant);
+			Assert.assertEquals(flag, "true");
+		}
+		else {
+			throw new SkipException("Skipping / Ignoring - Script not include for Execution ");
+		}
 	}
 	@AfterTest
 	public void Teardown()

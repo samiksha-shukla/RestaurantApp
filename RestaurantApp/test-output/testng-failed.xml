@@ -7,7 +7,7 @@
       <class name="takeaway.RestAppTest">
         <methods>
           <include name="Setup"/>
-          <include name="VerifyIfRestaurantsAreListed" invocation-numbers="1 2 3"/>
+          <include name="VerifyIfRestaurantsAreListed"/>
           <include name="refreshURL"/>
           <include name="Teardown"/>
         </methods>

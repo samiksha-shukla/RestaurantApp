@@ -10,12 +10,19 @@ import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
+//import org.openqa.selenium.OutputType;
+//import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import com.gargoylesoftware.css.parser.Locator;
+//import java.io.File;
+//import org.apache.commons.io.FileUtils;
+//import org.openqa.selenium.OutputType;
+//import org.openqa.selenium.TakesScreenshot;
 import takeaway.utilities.Constant;
 import takeaway.utilities.ObjectMapper;
 
@@ -27,16 +34,21 @@ public class RestAppFunctions {
 	ObjectMapper config = new ObjectMapper(Constant.config_path);
 	public void searchPinWithAlpha(WebDriver driver, String pin)
 	{ 
+		try { 			 
+			xplictWaitEleClickable((config.getbjectLocator("searchBar")), driver);
+		//	driver.findElement(config.getbjectLocator("searchBar")).click();
 
-		try { 
-			xplictWaitElePresence((config.getbjectLocator("searchBar")), driver);
 			driver.switchTo().activeElement().sendKeys(Keys.ENTER);
-			driver.findElement(config.getbjectLocator("searchBar")).sendKeys(Keys.ENTER);
+		driver.findElement(config.getbjectLocator("searchBar")).sendKeys(Keys.ENTER);
 			xplictWaitElePresence((config.getbjectLocator("searchBar")), driver);
 			driver.findElement(config.getbjectLocator("searchBar")).sendKeys(pin);
 			Thread.sleep(2000);
 			//driver.switchTo().activeElement().sendKeys(Keys.ENTER);
 			driver.findElement(config.getbjectLocator("searchBar")).sendKeys(Keys.ENTER);
+//			TakesScreenshot scrShot =((TakesScreenshot)driver);
+//			 File SrcFile=scrShot.getScreenshotAs(OutputType.FILE);
+//			 File DestFile=new File("C:/Users/Sam/Downloads/test.png");
+//			 FileUtils.copyFile(SrcFile, DestFile);
 			xplictWaitElePresence(config.getbjectLocator("alpha"), driver);
 			driver.findElement(config.getbjectLocator("alpha")).click();
 		} catch (IOException e) {
@@ -62,7 +74,6 @@ public class RestAppFunctions {
 			if(option.getText().toLowerCase().contains(restaurant))
 			{ 
 				flag ="true";
-				System.out.println("test restaurant selenium found");		
 			}
 		}
 		return flag;	
@@ -72,13 +83,15 @@ public class RestAppFunctions {
 	{
 		String restName = Constant.xlsxReader.getCellData(sheet, colName, rowNum);
 		try 
-		{	
+		{	xplictWaitElePresence(config.getbjectLocator("cookies"), driver);
 			//accept cookies
 			driver.findElement(config.getbjectLocator("cookies")).click();
 			//find restaurant element by locator
+			xplictWaitElePresence(config.getbjectLocator("selenium"), driver);
 			WebElement Element = driver.findElement(config.getbjectLocator("selenium"));
 			scroll(driver,Element);			
 			//click the restaurant
+			driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 			driver.findElement(config.getbjectLocator(restName)).click();
 		} catch (IOException e) 
 		{
@@ -91,6 +104,7 @@ public class RestAppFunctions {
 		try {
 			scroll(driver,driver.findElement(config.getbjectLocator(dishName)) );
 			driver.findElement(config.getbjectLocator(dishName)).click();
+			xplictWaitEleClickable(config.getbjectLocator("order"), driver);
 			scroll(driver,driver.findElement(config.getbjectLocator("order")) );
 			driver.findElement(config.getbjectLocator("order")).click();
 
@@ -139,7 +153,7 @@ public class RestAppFunctions {
 	{
 		try 
 		{
-			WebDriverWait wait = new WebDriverWait(driver, 30);
+			WebDriverWait wait = new WebDriverWait(driver, 20);
 			wait.until(ExpectedConditions.presenceOfElementLocated(locator));
 		} catch (Exception e) 
 		{
@@ -164,6 +178,14 @@ public class RestAppFunctions {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		//scroll down
 		js.executeScript("arguments[0].scrollIntoView();", Element);
+		js.executeScript("window.scrollBy(0,-100)");
+
+	}
+	public void scroll(WebDriver driver, Locator lo)
+	{
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		//scroll down
+		js.executeScript("arguments[0].scrollIntoView();", lo);
 		js.executeScript("window.scrollBy(0,-100)");
 
 	}
