@@ -51,13 +51,14 @@ to run test on firefox enter command
 ![Alt text](/images/MavenRunResult.PNG)
 
 ## Project Structure
+
 ### Test cases -
-Automation suite is created with 12 test cases listed below-
-|TestCase#	|TestCaseName	|Description|
-| ------ | ------ | ------ |
-|1	|VerifyIfRestaurantIsListed|	verify the restaurant is listed in the search page, pincode and restaurant name read from data controller|
-|2	|verifyOrderPlacementFlow|	Place order for test restaurant, pin, restaurant name, address, postcode, city, name, e-mail read from data controller|
-|3	|VerifyIfRestaurantsAreListed (it will run multiple times and data will be taken from MultiRestaurant of dataController)	|verify the restaurants are listed in the search page, pincode and restaurant name read from data controller using data provider|
+Automation suite is created with 3 test cases, 3rd case will run multiple times bases on data entered in datacontoller.xlsx. Test cases are listed below-
+|TestCase#	|TestCaseName	|Description|SheetName|
+| ------ | ------ | ------ |------ |
+|1	|VerifyIfRestaurantIsListed|	verify the restaurant is listed in the search page, pincode and restaurant name read from data controller| UserInput Row 2|
+|2	|verifyOrderPlacementFlow|	Place order for test restaurant, pin, restaurant name, address, postcode, city, name, e-mail read from data controller|UserInput Row 3|
+|3	|VerifyIfRestaurantsAreListed (it will run multiple times and data will be taken from MultiRestaurant of dataController)	|verify the restaurants are listed in the search page, pincode and restaurant name read from data controller using data provider| MultiRestaurent|
 
 
 ### Drivers-
@@ -68,7 +69,9 @@ Folder path: /RestaurantApp/drivers/
 1.	Data is managed using excel, saved under below path(RestaurantAppController.xlsx)
 project folder - >src-> test -> resources -> datacontroller
 2.	Data driven approach is achieved using apache POI library and methods are written in ExcelUtils.java class under takeaway.utilities package
-3.	Test is designed to run on Chrome, Firefox. Different testng files are available for same.
+3.	Test is designed to run on Chrome, Firefox. Different testng files are available for same. 
+chromeTestNG - to execute test in Chrome browser
+firefoxTestNG - to execute test in firefox browser
 
  
 ### Locators and URL-
