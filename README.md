@@ -47,7 +47,7 @@ to run test on firefox enter command
 (Ignore warring and POI related errors, it’s because of version compatibilities)
 3. Once execution is completed, result with be displayed with count of test cases, failed error etc. (refer to screen shot below)
 
-![Alt text](RestaurantApp/RestaurantApp/images/MavenRunResult.png)
+![Alt text](/images/MavenRunResult.png)
 
 ## Project Structure
 ### Test cases -
