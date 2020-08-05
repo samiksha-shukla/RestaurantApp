@@ -6,7 +6,6 @@ package takeaway;
 import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
@@ -36,19 +35,17 @@ public class RestAppFunctions {
 	{ 
 		try { 			 
 			xplictWaitEleClickable((config.getbjectLocator("searchBar")), driver);
-		//	driver.findElement(config.getbjectLocator("searchBar")).click();
-
-			driver.switchTo().activeElement().sendKeys(Keys.ENTER);
-		driver.findElement(config.getbjectLocator("searchBar")).sendKeys(Keys.ENTER);
-			xplictWaitElePresence((config.getbjectLocator("searchBar")), driver);
-			driver.findElement(config.getbjectLocator("searchBar")).sendKeys(pin);
-			Thread.sleep(2000);
-			//driver.switchTo().activeElement().sendKeys(Keys.ENTER);
 			driver.findElement(config.getbjectLocator("searchBar")).sendKeys(Keys.ENTER);
-//			TakesScreenshot scrShot =((TakesScreenshot)driver);
-//			 File SrcFile=scrShot.getScreenshotAs(OutputType.FILE);
-//			 File DestFile=new File("C:/Users/Sam/Downloads/test.png");
-//			 FileUtils.copyFile(SrcFile, DestFile);
+			Thread.sleep(2000);
+			driver.findElement(config.getbjectLocator("searchBar")).sendKeys(Keys.BACK_SPACE);
+			driver.findElement(config.getbjectLocator("searchBar")).sendKeys(Keys.BACK_SPACE);
+			driver.findElement(config.getbjectLocator("searchBar")).sendKeys(Keys.BACK_SPACE);
+			driver.findElement(config.getbjectLocator("searchBar")).sendKeys(Keys.BACK_SPACE);
+			xplictWaitEleClickable((config.getbjectLocator("searchBar")), driver);
+			driver.findElement(config.getbjectLocator("searchBar")).sendKeys(pin);
+			System.out.println("pin entered");
+			Thread.sleep(6000);
+			driver.findElement(config.getbjectLocator("searchBar")).sendKeys(Keys.ENTER);
 			xplictWaitElePresence(config.getbjectLocator("alpha"), driver);
 			driver.findElement(config.getbjectLocator("alpha")).click();
 		} catch (IOException e) {
@@ -84,15 +81,15 @@ public class RestAppFunctions {
 		String restName = Constant.xlsxReader.getCellData(sheet, colName, rowNum);
 		try 
 		{	xplictWaitElePresence(config.getbjectLocator("cookies"), driver);
-			//accept cookies
-			driver.findElement(config.getbjectLocator("cookies")).click();
-			//find restaurant element by locator
-			xplictWaitElePresence(config.getbjectLocator("selenium"), driver);
-			WebElement Element = driver.findElement(config.getbjectLocator("selenium"));
-			scroll(driver,Element);			
-			//click the restaurant
-			driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-			driver.findElement(config.getbjectLocator(restName)).click();
+		//accept cookies
+		driver.findElement(config.getbjectLocator("cookies")).click();
+		//find restaurant element by locator
+		xplictWaitElePresence(config.getbjectLocator("selenium"), driver);
+		WebElement Element = driver.findElement(config.getbjectLocator("selenium"));
+		scroll(driver,Element);			
+		//click the restaurant
+		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+		driver.findElement(config.getbjectLocator(restName)).click();
 		} catch (IOException e) 
 		{
 			e.printStackTrace();

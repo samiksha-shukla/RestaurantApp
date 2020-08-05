@@ -31,11 +31,9 @@ public class RestAppTest {
 	RestAppFunctions objFunction = new RestAppFunctions();
 	String projectPath = System.getProperty("user.dir");
 	String url = config.prop.getProperty("url");	
-	public static WebDriver driver;
-	//WebDriver driver;
+	public WebDriver driver;
 	String tc_runmode;	
 	By locator;
-	ChromeOptions option = new ChromeOptions();
 
 	@DataProvider(name = "PlaceOrder")
 	public Object[][] buyACar() throws Exception {
@@ -49,15 +47,17 @@ public class RestAppTest {
 	{ String headless = Constant.xlsxReader.getCellData("headless", "value", 2);
 	System.out.println("Do you want to run the test in headless mode : " + headless);
 	if(browserName.equalsIgnoreCase("chrome"))
-	{ if(headless.equalsIgnoreCase("yes"))
+	{ 
+		ChromeOptions option = new ChromeOptions();
+
+		if(headless.equalsIgnoreCase("yes"))
 	{
-		driver = new HtmlUnitDriver();
+	//	driver = new HtmlUnitDriver();
 		option.addArguments("--headless");
 		option.addArguments("--disable-gpu");
 		option.addArguments("--window-size=1920,1080");
-	}
-	else{
-	}	System.setProperty("webdriver.chrome.driver", projectPath+"/drivers/chromedriver.exe");
+	} 
+	System.setProperty("webdriver.chrome.driver", projectPath+"/drivers/chromedriver.exe");
 	driver = new ChromeDriver(option);
 	//driver.manage().window().maximize();
 	}
@@ -67,14 +67,14 @@ public class RestAppTest {
 		if(headless.equalsIgnoreCase("yes"))
 		{		
 			firefoxOptions.addArguments("--headless");
-			option.addArguments("--disable-gpu");
-	        firefoxOptions.addArguments("--window-size=1920,1080");
+			firefoxOptions.addArguments("--disable-gpu");
+	        firefoxOptions.addArguments("--window-size=1920,1080"); 
 		}		
 		System.setProperty("webdriver.gecko.driver", projectPath+"/drivers/geckodriver1.exe");
 		driver = new FirefoxDriver(firefoxOptions);
 			
 	}
-	driver.get(url);
+	//driver.get(url);
 	driver.manage().window().maximize();
 	}
 
@@ -84,7 +84,7 @@ public class RestAppTest {
 		driver.get(url);
 	}
 
-	@Test(priority =1)
+	@Test(priority =1,  enabled = true)
 	public void VerifyIfRestaurantIsListed()
 	{  
 		String flag = "false";
@@ -105,7 +105,7 @@ public class RestAppTest {
 		}
 	}
 
-	@Test(priority =2 )
+	@Test(priority =2, enabled = false )
 	public void verifyOrderPlacementFlow()
 	{ 
 		tc_runmode =Constant.xlsxReader.getCellData("TestCases", "runmode",3);
@@ -122,15 +122,13 @@ public class RestAppTest {
 			objFunction.enterDetails(driver, "UserInput", 3);
 			//print order reference number after order is place
 			System.out.println("order reference number is " + objFunction.getOrderReferenceNumber(driver) );
-
 		}
 		else {
 			throw new SkipException("Skipping / Ignoring - Script not include for Execution ");
 		}
-
 	}
 
-	@Test(priority =3, dataProvider = "PlaceOrder")
+	@Test(priority =3, dataProvider = "PlaceOrder", enabled = true)
 	public void VerifyIfRestaurantsAreListed( String pin, String restaurant)
 	{ 	
 		String flag = "false";

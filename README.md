@@ -48,6 +48,10 @@ file path - project folder/RestaurantApp/src/test/resources/datacontroller/Resta
 or 
 to run test on firefox enter command 
 ``` mvn clean test -DtestngFile=firefoxTestNG.xml ``` and press enter
+
+or 
+to run test on both chrome and firefox enter command 
+``` mvn clean test -DtestngFile=parallel.xml ``` and press enter
 (Ignore warring and POI related errors, it’s because of version compatibilities)
 
 4. Once execution is completed, result with be displayed with count of test cases, failed error etc. (refer to screen shot below)
