@@ -8,7 +8,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
-import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 import org.testng.Assert;
 import org.testng.SkipException;
 import org.testng.annotations.AfterTest;
@@ -84,7 +83,7 @@ public class RestAppTest {
 		driver.get(url);
 	}
 
-	@Test(priority =1,  enabled = true)
+	@Test(priority =1)
 	public void VerifyIfRestaurantIsListed()
 	{  
 		String flag = "false";
@@ -105,7 +104,7 @@ public class RestAppTest {
 		}
 	}
 
-	@Test(priority =2, enabled = false )
+	@Test(priority =2 )
 	public void verifyOrderPlacementFlow()
 	{ 
 		tc_runmode =Constant.xlsxReader.getCellData("TestCases", "runmode",3);
@@ -116,7 +115,7 @@ public class RestAppTest {
 			objFunction.searchPinWithAlpha(driver, pin);
 			//select restaurant
 			objFunction.selectRestaurant(driver,"UserInput", "RestaurantName", 3);
-			//add Item to the cart and click Order button
+			//add Itm to the cart and click Order button
 			objFunction.addItemAndClickOrder(driver, "salami");
 			//Enter address and other details in payment page
 			objFunction.enterDetails(driver, "UserInput", 3);
@@ -128,7 +127,7 @@ public class RestAppTest {
 		}
 	}
 
-	@Test(priority =3, dataProvider = "PlaceOrder", enabled = true)
+	@Test(priority =3, dataProvider = "PlaceOrder")
 	public void VerifyIfRestaurantsAreListed( String pin, String restaurant)
 	{ 	
 		String flag = "false";
